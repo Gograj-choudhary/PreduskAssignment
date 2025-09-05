@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const experienceApi = axios.create({
-    baseURL: "http://preduskbackend.vercel.app/api/v1/experience"
+    baseURL: "https://preduskbackend.vercel.app/api/v1/experience"
 });
 
 

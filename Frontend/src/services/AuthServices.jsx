@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const authApi = axios.create({
-  baseURL: "http://preduskbackend.vercel.app/api/v1/auth",
+  baseURL: "https://preduskbackend.vercel.app/api/v1/auth",
 });
 
 

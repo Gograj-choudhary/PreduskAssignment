@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const adminApi = axios.create({
-    baseURL: "http://preduskbackend.vercel.app/api/v1/admin"
+    baseURL: "https://preduskbackend.vercel.app/api/v1/admin"
 });
 
 
