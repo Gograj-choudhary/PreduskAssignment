@@ -10,7 +10,7 @@ const app = express();
 // Middleware
 app.use(express.json());
 app.use(cors({
-  origin: 'http://localhost:5173',
+  origin: ['http://localhost:5173', 'https://preduskgograj.vercel.app'],
 }));
 
 // Connect to DB
@@ -30,6 +30,12 @@ app.use('/api/v1/experience', ExperienceRoutes);
 app.use('/api/v1/profile', ProfileRoutes);
 app.use('/api/v1/project', ProjectRoutes);
 app.use('/api/v1/skill', SkillRoutes);
+
+app.get("/health", (req, res)=>{
+  res.status(200).json({ status: "ok" ,message : "server is healthy", timeStamp : new Date().toLocaleDateString()})
+}
+)
+
 
 // Start server
 const PORT = process.env.PORT || 3000;
