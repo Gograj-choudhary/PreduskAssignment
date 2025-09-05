@@ -48,12 +48,11 @@ src/
 - Node.js 16+ or Bun runtime
 - Backend API running (see backend README)
 
-## Installation
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/portfolio-frontend.git
-cd portfolio-frontend
+git clone https://github.com/Gograj-choudhary/PreduskAssignment.git
+cd Frontend
 ```
 
 2. Install dependencies using Bun:
@@ -65,10 +64,14 @@ bun install
 npm install
 ```
 
-3. Create a `.env` file in the root directory:
-```env
-VITE_API_URL=http://localhost:5000/api
-VITE_APP_NAME=Portfolio
+3. Backend base URLs in Services
+
+adminApi =http://localhost:3000/api/v1/admin
+authApi =http://localhost:3000/api/v1/auth
+projectApi =http://localhost:3000/api/v1/project
+skillApi =http://localhost:3000/api/v1/skill
+experienceApi =http://localhost:3000/api/v1/experience
+profileApi =http://localhost:3000/api/v1/profile
 ```
 
 4. Start the development server:
@@ -124,12 +127,6 @@ bun run build
    - AWS S3
    - Firebase Hosting
 
-## Environment Variables
-
-```env
-VITE_API_URL=          # Backend API URL
-VITE_APP_NAME=         # Application name
-```
 
 ## Code Organization
 
@@ -171,6 +168,4 @@ VITE_APP_NAME=         # Application name
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
 
-## License
 
-This project is licensed under the MIT License - see the LICENSE file for details.

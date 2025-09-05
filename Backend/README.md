@@ -31,8 +31,8 @@ A robust REST API backend for a portfolio application built with Node.js and Exp
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/portfolio-backend.git
-cd portfolio-backend
+git clone https://github.com/Gograj-choudhary/PreduskAssignment.git
+cd Backend
 ```
 
 2. Install dependencies:
@@ -42,27 +42,27 @@ npm install
 
 3. Create a `.env` file in the root directory:
 ```env
-PORT=5000
+PORT=3000
 MONGODB_URI=mongodb://localhost:27017/portfolio
-JWT_SECRET=your_jwt_secret_key
+JWT_SECRET=My_jwt_secret_key
 NODE_ENV=development
 ```
 
 4. Start the server:
 ```bash
 # Development mode
-npm run dev
+node server.js
 
 # Production mode
-npm start
+node server.js
 ```
 
 ## Environment Variables
 
 ```env
-PORT=5000                                    # Server port
+PORT=3000                                    # Server port
 MONGODB_URI=mongodb://localhost:27017/portfolio  # MongoDB connection string
-JWT_SECRET=your_jwt_secret_key              # JWT signing key
+JWT_SECRET=my_jwt_secret_key              # JWT signing key
 NODE_ENV=development                        # development/production
 ```
 
@@ -70,76 +70,132 @@ NODE_ENV=development                        # development/production
 
 ### Authentication
 ```json
-POST /api/auth/register
+POST /api/v1/admin/register
 {
-  "email": "user@example.com",
-  "password": "password123"
+  "name": "gograj dadarwal",
+  "password": "gograj@123",
+  "phone" : 9876543210
 }
 
-POST /api/auth/login
+POST /api/v1/admin/login
 {
-  "email": "user@example.com",
+  "phone" : 9876543210,
   "password": "password123"
 }
 ```
 
 ### Profile
 ```json
-GET /api/profile     // Get profile
-POST /api/profile    // Create profile
+//Public routes
+GET /api/v1/profile/     // Get profile
+
+//protected routes 
+POST /api/v1/profile/add    // Create profile
 {
-  "name": "John Doe",
-  "title": "Full Stack Developer",
-  "bio": "Passionate developer..."
+  "name": "Suresh Kumar",
+  "email": "suresh123@example.com",
+  "bio": "Passionate MERN developer",
+  "education": [
+    {
+      "institute": "IIIT Kottayam",
+      "degree": "B.Tech",
+      "field": "ECE",
+      "startYear": 2022,
+      "endYear": 2026
+    }
+  ],
+  "links": {
+    "github": "https://github.com/sureshk",
+    "linkedin": "https://linkedin.com/in/sureshk"
+  }
 }
-PUT /api/profile     // Update profile
-DELETE /api/profile  // Delete profile
+
+// Response 
+
+{
+  "success": true,
+  "message": "Profile created successfully"
+}
+
+
+
+PUT /api/v1/profile/update/:profileid     // Update profile
+DELETE /api/v1/profile/delete/:profileid  // Delete profile
 ```
 
 ### Projects
 ```json
-GET /api/projects           // Get all projects
-GET /api/projects/:id       // Get single project
-POST /api/projects         // Create project
+GET GET /api/v1/project/          // Get all projects
+
+// Protected APIs
+POST /api/project/add         // Create project
+
 {
-  "title": "Project Name",
-  "description": "Project description",
-  "technologies": ["React", "Node.js"]
+  "title": "Milk Bill Book",
+  "description": [
+    "Created a full-stack Milk Bill Management application using the MERN stack with JWT authentication for secure multi-role (admin & customer) access.",
+    "Integrated Razorpay payment gateway, enabling 100% secure bill payments directly into respective admin accounts.",
+    "Built OTP verification, bill automation, and multi-channel reminders (Email + SMS) using Node-Cron, NodeMailer, and Fast2SMS custom services improving security and payment compliance."
+  ],
+  "skillsUsed": [
+    "MERN",
+    "JWT",
+    "RazorPay",
+    "NodeMailer",
+    "Node-Cron",
+    "SMS Service"
+  ],
+  "links": {
+    "github": "https://github.com/gograj/milk-bill-book",
+    "demo": "https://milk-bill-book-3hqd.vercel.app/"
+  }
 }
-PUT /api/projects/:id      // Update project
-DELETE /api/projects/:id   // Delete project
+
+PUT /api/v1/project/update/:projectid      // Update project
+DELETE /api/v1/project/delete/:projectid   // Delete project
 ```
 
 ### Skills
 ```json
-GET /api/skills           // Get all skills
-POST /api/skills         // Create skill
+GET /api/v1/skill/         // Get all skills
+
+// protecte routes
+POST /api/v1/skill/add        // Create skill
+
 {
-  "name": "JavaScript",
-  "level": "Advanced"
+    "title": "Languages",
+    "skills": "JavaScript, Python, C, C++, HTML/CSS, MATLAB"
 }
-PUT /api/skills/:id      // Update skill
-DELETE /api/skills/:id   // Delete skill
+
+PUT /api/v1/skill/update/:skillid      // Update skill
+DELETE /api/v1/skill/delete/:skillid   // Delete skill
 ```
 
 ### Experience
 ```json
-GET /api/experience           // Get all experiences
-POST /api/experience         // Create experience
+GET /api/v1/experience/           // Get all experiences
+
+// protected routes 
+POST /api/v1/experience/add         // Create experience
+
 {
-  "company": "Company Name",
-  "position": "Developer",
-  "duration": "2020-2023"
+  "title": "Senior Backend Developer",
+  "company": "Tech Corp",
+  "location": "Remote",
+  "startDate": "january 2025",
+  "endDate": "May 2025",
+  "description": "Built scalable microservices"
 }
-PUT /api/experience/:id      // Update experience
-DELETE /api/experience/:id   // Delete experience
+
+PUT /api/v1/experience/update/:experienceid      // Update experience
+DELETE /api/v1/experience/delete/:experienceid   // Delete experience
 ```
 
 ## Development vs Production
 
 ### Development Mode
 ```bash
-npm run dev
+node server.js
 ```
 - Runs with nodemon for hot reloading
 - Detailed error messages
@@ -147,7 +203,7 @@ npm run dev
 
 ### Production Mode
 ```bash
-npm start
+node server.js
 ```
 - Optimized for performance
 - Minimal error information exposed
