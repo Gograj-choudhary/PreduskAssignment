@@ -235,4 +235,4 @@ The API uses consistent error response format:
 
 ## PostMan Testing Folder URL
 
-https://abc333-0339.postman.co/workspace/Milk-Book~8c7d2154-97d8-4b9e-8c63-8889def8b6f5/collection/40357458-5ca36a2c-9b0e-4b4f-aeb3-6fd15274e390?action=share&source=copy-link&creator=40357458
+https://api.postman.com/collections/40357458-5ca36a2c-9b0e-4b4f-aeb3-6fd15274e390?access_key=PMAT-01K4D97ZFABFJN4J3XJGFGEGHD
